@@ -32,19 +32,29 @@ exports.functionsAnswers = {
   },
 
   partial : function(fn, str1, str2) {
-
+    return function(str3){
+      return fn.call(null, str1, str2, str3);
+    };
   },
 
   useArguments : function() {
-
+    var sum = 0;
+    if (arguments != null && arguments.length > 0)
+    {
+      for (var i = 0; i < arguments.length; i++)
+        sum += arguments[i];
+    }
+    
+    return sum;
   },
 
   callIt : function(fn) {
-
+    var args = Array.prototype.slice.call(arguments, 1, arguments.length);
+    return fn.apply(null, args);
   },
 
   partialUsingArguments : function(fn) {
-
+    
   },
 
   curryIt : function(fn) {
